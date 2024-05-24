@@ -2,6 +2,7 @@ import yfinance as yf
 import streamlit as st
 import pandas as pd
 import re
+import nltk
 from sklearn.feature_extraction.text import CountVectorizer
 from nltk.tokenize import sent_tokenize
 import string #untuk casefolding
