@@ -257,54 +257,45 @@ if ringkas:
     st.write(ringkasan)
 
 
+# MEMNAMPILKAN DATA UJI COBA
+# Fungsi untuk membaca dan memproses data dari file JSON
+def load_data(json_path):
+    data = pd.read_json(json_path, lines=True)
+    data['nomor dokumen'] = range(1, len(data) + 1)
+    cols = ['nomor dokumen'] + [col for col in data if col != 'nomor dokumen']
+    return data[cols]
 
-json_path='statistik_skenario1-50_results.json'   
-data1 = pd.read_json(json_path, lines=True) 
-data1['nomor dokumen'] = range(1, len(data1) + 1)
-cols = ['nomor dokumen'] + [col for col in data1 if col != 'nomor dokumen']
-data1 = data1[cols]
+# Path ke file JSON
+json_paths = [
+    'statistik_skenario1-50_results.json',  # data1
+    'statistik_skenario1-30_results.json',  # data2
+    'statistik_skenario2-50_results.json',  # data3
+    'statistik_skenario2-30_results.json',  # data4
+    'statistik_skenario3-50_results.json',  # data5
+    'statistik_skenario3-30_results.json'   # data6
+]
 
+# Memuat semua data
+data_list = [load_data(path) for path in json_paths]
 
-json_path='statistik_skenario1-30_results.json'   
-data2 = pd.read_json(json_path, lines=True) 
-data2['nomor dokumen'] = range(1, len(data2) + 1)
-cols = ['nomor dokumen'] + [col for col in data2 if col != 'nomor dokumen']
-data2 = data2[cols]
+# Fungsi untuk menampilkan judul dan dataframe
+def display_data(title, data):
+    st.write(title)
+    st.dataframe(data)
 
-json_path='statistik_skenario2-50_results.json'   
-data3 = pd.read_json(json_path, lines=True) 
-data3['nomor dokumen'] = range(1, len(data3) + 1)
-cols = ['nomor dokumen'] + [col for col in data3 if col != 'nomor dokumen']
-data3 = data3[cols]
+# Judul section
+st.title('Hasil Uji Coba')
 
-json_path='statistik_skenario2-30_results.json'   
-data4 = pd.read_json(json_path, lines=True) 
-data4['nomor dokumen'] = range(1, len(data4) + 1)
-cols = ['nomor dokumen'] + [col for col in data4 if col != 'nomor dokumen']
-data4 = data4[cols]
+# Judul dan DataFrame
+titles = [
+    "Hasil Uji coba peringkasan Lambda 0 dan compression rate 50%",
+    "Hasil Uji coba peringkasan Lambda 0 dan compression rate 30%",
+    "Hasil Uji coba peringkasan Lambda 0.7 dan compression rate 50%",
+    "Hasil Uji coba peringkasan Lambda 0.7 dan compression rate 30%",
+    "Hasil Uji coba peringkasan Lambda 1 dan compression rate 50%",
+    "Hasil Uji coba peringkasan Lambda 1 dan compression rate 30%"
+]
 
-json_path='statistik_skenario3-50_results.json'   
-data5 = pd.read_json(json_path, lines=True) 
-data5['nomor dokumen'] = range(1, len(data5) + 1)
-cols = ['nomor dokumen'] + [col for col in data5 if col != 'nomor dokumen']
-data5 = data5[cols]
-
-json_path='statistik_skenario3-30_results.json'   
-data6 = pd.read_json(json_path, lines=True) 
-data6['nomor dokumen'] = range(1, len(data6) + 1)
-cols = ['nomor dokumen'] + [col for col in data6 if col != 'nomor dokumen']
-data6 = data6[cols]
-
-st.title('hasil Uji Coba')
-st.write("""Hasil Uji coba peringkasan Lambda 0 dan compression rate 50%""")
-st.dataframe(data1)
-st.write("""Hasil Uji coba peringkasan Lambda 0 dan compression rate 30%""")
-st.dataframe(data2)
-st.write("""Hasil Uji coba peringkasan Lambda 0.7 dan compression rate 50%""")
-st.dataframe(data3)
-st.write("""Hasil Uji coba peringkasan Lambda 0.7 dan compression rate 30%""")
-st.dataframe(data4)
-st.write("""Hasil Uji coba peringkasan Lambda 1 dan compression rate 50%""")
-st.dataframe(data5)
-st.write("""Hasil Uji coba peringkasan Lambda 1 dan compression rate 30%""")
-st.dataframe(data6)
+# Menampilkan semua data
+for title, data in zip(titles, data_list):
+    display_data(title, data)
