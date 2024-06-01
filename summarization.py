@@ -267,6 +267,7 @@ def load_data(json_path):
 
 # Path ke file JSON
 json_paths = [
+    'query_results.json',  # dataquery
     'statistik_skenario1-50_results.json',  # data1
     'statistik_skenario1-30_results.json',  # data2
     'statistik_skenario2-50_results.json',  # data3
@@ -284,10 +285,14 @@ def display_data(title, data):
     st.dataframe(data)
 
 # Judul section
-st.title('Hasil Uji Coba')
+st.header('Hasil Uji Coba')
+st.write('**Berikut adalah hasil uji coba peringkasan teks berita menggunakan kata kunci dari Latent Dirichlet Allocation dan metode peringkasan Maximum Marginal Relevance dengan dataset indosum sebanyak 50 artikel.**')
+
+
 
 # Judul dan DataFrame
 titles = [
+    "Hasil Ekstraksi kata kunci dari LDA",
     "Hasil Uji coba peringkasan Lambda 0 dan compression rate 50%",
     "Hasil Uji coba peringkasan Lambda 0 dan compression rate 30%",
     "Hasil Uji coba peringkasan Lambda 0.7 dan compression rate 50%",
