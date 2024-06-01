@@ -258,37 +258,38 @@ if ringkas:
 
 
 
-json_path='data\statistik_skenario1-50_results.json'   
+json_path='statistik_skenario1-50_results.json'   
 data1 = pd.read_json(json_path, lines=True) 
 data1['nomor dokumen'] = range(1, len(data1) + 1)
 cols = ['nomor dokumen'] + [col for col in data1 if col != 'nomor dokumen']
 data1 = data1[cols]
 
-json_path='data\statistik_skenario1-30_results.json'   
+
+json_path='statistik_skenario1-30_results.json'   
 data2 = pd.read_json(json_path, lines=True) 
 data2['nomor dokumen'] = range(1, len(data2) + 1)
 cols = ['nomor dokumen'] + [col for col in data2 if col != 'nomor dokumen']
 data2 = data2[cols]
 
-json_path='data\statistik_skenario2-50_results.json'   
+json_path='statistik_skenario2-50_results.json'   
 data3 = pd.read_json(json_path, lines=True) 
 data3['nomor dokumen'] = range(1, len(data3) + 1)
 cols = ['nomor dokumen'] + [col for col in data3 if col != 'nomor dokumen']
 data3 = data3[cols]
 
-json_path='data\statistik_skenario2-30_results.json'   
+json_path='statistik_skenario2-30_results.json'   
 data4 = pd.read_json(json_path, lines=True) 
 data4['nomor dokumen'] = range(1, len(data4) + 1)
 cols = ['nomor dokumen'] + [col for col in data4 if col != 'nomor dokumen']
 data4 = data4[cols]
 
-json_path='data\statistik_skenario3-50_results.json'   
+json_path='statistik_skenario3-50_results.json'   
 data5 = pd.read_json(json_path, lines=True) 
 data5['nomor dokumen'] = range(1, len(data5) + 1)
 cols = ['nomor dokumen'] + [col for col in data5 if col != 'nomor dokumen']
 data5 = data5[cols]
 
-json_path='data\statistik_skenario3-30_results.json'   
+json_path='statistik_skenario3-30_results.json'   
 data6 = pd.read_json(json_path, lines=True) 
 data6['nomor dokumen'] = range(1, len(data6) + 1)
 cols = ['nomor dokumen'] + [col for col in data6 if col != 'nomor dokumen']
